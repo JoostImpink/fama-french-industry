@@ -1,21 +1,9 @@
 'use strict';
 
-/* loads files in /import and processes these to create corresponding SAS macro
-
-*/
+/* loads files in /import and processes these to create corresponding SAS macro */
 
 var mustache = require('mustache');
 var fs = require('fs');
-
-var view = {
-  title: "Joe",
-  calc: function () {
-    return 2 + 4;
-  }
-};
- 
-var output = mustache.render("{{title}} spends {{calc}}", view);
-
 
 // get file names in directory
 var files = fs.readdirSync( "import" );
@@ -37,8 +25,7 @@ var processFile = function(filename){
 	matches.forEach( function(m){
 		code.push( makeCode(m) );
 	});
-	var output = mustache.render( template, { code: code.join("\n") } );
-	console.log(output);
+	var output = mustache.render( template, { code: code.join("\n") } );	
 	// write to output file
 	var filename_sas = filename.replace('.txt', '.sas');
 	fs.writeFileSync( "SAS/" + filename_sas, output, 'utf8');
@@ -55,7 +42,7 @@ var processFile = function(filename){
 	          3100-3199
 	          3940-3989
   should return:
-  	if &sicvar IN (100-999, 2000-2399, 2700-2749, 2770-2799, 3100-3199, 3940-3989) then &varname = 1; 
+  	if ( &sicvar ge 0100 and &sicvar le 0999) or ( &sicvar ge 2000 and &sicvar le 2399) or ( &sicvar ge 2700 and &sicvar le 2749) or ( &sicvar ge 2770 and &sicvar le 2799) or ( &sicvar ge 3100 and &sicvar le 3199) or ( &sicvar ge 3940 and &sicvar le 3989) then &varname= 1;
 */
 var makeCode = function(str){
 	// regex to grab industry code
@@ -66,9 +53,8 @@ var makeCode = function(str){
 	codePairs.forEach (function(el){
 		var p = el.split("-");
 		codeblock.push ( "( &sicvar ge " + p[0] + " and &sicvar le " + p[1] +")" );  
-	})
-	
-	// codeline
+	})	
+	// line of code for the industry code
 	return "\tif " + codeblock.join(" or ") + " then &varname=" + indCode + ";";	
 }; 
 
