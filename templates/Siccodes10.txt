@@ -1,0 +1,28 @@
+/*
+	Fama French 10 industry classification 
+
+	variables:
+	- dsin: input dataset 
+	- dsout: name of output dataset
+	- sicvar: variable holding sic
+	- varname: variable name to hold industry classification
+
+	sample usage:
+	%ff10(dsin=work.input, dsout=work.output, varname=ff10);	
+*/
+
+%macro ff10(dsin=, dsout=, sicvar=sich, varname=ff10);
+
+	data &dsout;
+	set &dsin;
+	
+	/* industry assignments */
+{{{code}}}
+
+	/*  Fama french siccodes file does not include industry codes for 'other'
+		Set it to 10 (i.e. 'other') if not yet set
+	 */
+	if &varname eq . then &varname = 10;
+	run;
+
+%mend;

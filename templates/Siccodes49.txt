@@ -1,0 +1,24 @@
+/*
+	Fama French 49 industry classification 
+
+	variables:
+	- dsin: input dataset 
+	- dsout: name of output dataset
+	- sicvar: variable holding sic
+	- varname: variable name to hold industry classification
+
+	sample usage:
+	%ff49(dsin=work.input, dsout=work.output, varname=ff49);	
+*/
+
+%macro ff49(dsin=, dsout=, sicvar=sich, varname=ff49);
+
+	data &dsout;
+	set &dsin;
+	
+	/* industry assignments */
+{{{code}}}
+
+	run;
+
+%mend;

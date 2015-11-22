@@ -1,0 +1,28 @@
+/*
+	Fama French 38 industry classification 
+
+	variables:
+	- dsin: input dataset 
+	- dsout: name of output dataset
+	- sicvar: variable holding sic
+	- varname: variable name to hold industry classification
+
+	sample usage:
+	%ff38(dsin=work.input, dsout=work.output, varname=ff38);	
+*/
+
+%macro ff38(dsin=, dsout=, sicvar=sich, varname=ff38);
+
+	data &dsout;
+	set &dsin;
+	
+	/* industry assignments */
+{{{code}}}
+
+	/*  Fama french siccodes file does not include industry codes for 'other'
+		Set it to 38 (i.e. 'other') if not yet set
+	 */
+	if &varname eq . then &varname = 38;
+	run;
+
+%mend;

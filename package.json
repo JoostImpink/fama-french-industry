@@ -1,0 +1,23 @@
+{
+  "name": "fama-french",
+  "description": "Fama French Industry Classification",
+  "version": "0.0.1",
+  "private": false,
+  "author": "Joost Impink",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joostUF/fama-french.git"
+  },
+  "engines": {
+    "node": ">=0.10.28",
+    "npm": ">=1.4.28"
+  },
+  "scripts": {
+    "make": "node scripts/make.js"
+  },
+  "dependencies": {
+    "csv": "^0.4.1",
+    "lodash": "~2.4.1",
+    "mustache": "^2.2.0"
+  }
+}
