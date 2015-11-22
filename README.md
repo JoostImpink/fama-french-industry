@@ -20,7 +20,7 @@ Folder `SAS` holds macros for each of the seven industry classifications
 
 #### Sample usage
 
-Download the repository and move it into your SAS folder structure, e.g. `\yourproject\SAS\git\fama-french`. Then, use as follows, assuming your code is in `yourproject\SAS'.
+Download the repository and move it into your SAS folder structure, e.g. `\yourproject\SAS\git\fama-french`. Then, use as follows, assuming your code is in `yourproject\SAS`.
  
     /* load macro */
     include 'git/fama-french/SAS/Siccodes49.sas';
