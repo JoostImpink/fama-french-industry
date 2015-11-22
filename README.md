@@ -21,9 +21,7 @@ Folder `SAS` holds macros for each of the seven industry classifications
 #### Sample usage
 
 Download the repository and move it into your SAS folder structure, e.g. `\yourproject\SAS\git\fama-french`. Then, use as follows
-
-
-    ```` 
+ 
     /* load macro */
     include 'SAS\siccodes49.sas';
 
@@ -35,14 +33,14 @@ Download the repository and move it into your SAS folder structure, e.g. `\yourp
 
     /* append fama french 49 industry code */
     %ff49(dsin=work.a_funda, dsout=work.b_ff, varname=ff49);
-    ````
+
 
 ### Nodejs
 
 The SAS code is generated using `scripts\make.js`. To run the script, you need to have node and npm installed:
 
-    ```` npm install
-    ```` npm run make
+    npm install
+    npm run make
 
 ### Templates
 
