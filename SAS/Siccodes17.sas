@@ -11,7 +11,7 @@
 	%ff17(dsin=work.input, dsout=work.output, varname=ff17);	
 */
 
-%macro ff17(dsin=, dsout=, sicvar=sich, varname=ff49);
+%macro ff17(dsin=, dsout=, sicvar=sich, varname=ff17);
 
 	data &dsout;
 	set &dsin;
